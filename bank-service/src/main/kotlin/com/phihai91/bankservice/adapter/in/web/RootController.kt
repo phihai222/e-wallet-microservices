@@ -1,4 +1,4 @@
-package com.phihai91.bankservice.controllers
+package com.phihai91.bankservice.adapter.`in`.web
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
