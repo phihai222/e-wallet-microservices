@@ -4,7 +4,7 @@ databaseChangeLog:
       author: phihai91
       changes:
         - createTable:
-            tableName: integration_service
+            tableName: integrator
             columns:
               - column:
                   name: id
@@ -13,16 +13,22 @@ databaseChangeLog:
                   name: api_key
                   type: NVARCHAR
               - column:
+                  name: service_name
+                  type: NVARCHAR
+              - column:
+                  name: status
+                  type: NVARCHAR
+              - column:
                   name: created_at
-                  type: TIMESTAMP
+                  type: BIGINT
               - column:
                   name: expired_at
-                  type: TIMESTAMP
+                  type: BIGINT
         - addPrimaryKey:
-            tableName: integration_service
+            tableName: integrator
             columnNames: id
             constraintName: pk_service
             validate: true
       rollback:
         - dropTable:
-            tableName: integration_service
+            tableName: integrator

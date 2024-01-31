@@ -26,7 +26,7 @@ databaseChangeLog:
                   type: NVARCHAR
               - column:
                   name: created_at
-                  type: TIMESTAMP
+                  type: BIGINT
         - addPrimaryKey:
             tableName: balance_history
             columnNames: id

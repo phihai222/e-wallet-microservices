@@ -29,7 +29,7 @@ databaseChangeLog:
                   type: NVARCHAR
               - column:
                   name: created_at
-                  type: TIMESTAMP
+                  type: BIGINT
         - addPrimaryKey:
             tableName: account
             columnNames: account_number
