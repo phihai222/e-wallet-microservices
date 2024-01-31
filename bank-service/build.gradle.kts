@@ -29,6 +29,7 @@ dependencies {
     implementation("org.liquibase:liquibase-core")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3")
     runtimeOnly("org.postgresql:postgresql")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3")
