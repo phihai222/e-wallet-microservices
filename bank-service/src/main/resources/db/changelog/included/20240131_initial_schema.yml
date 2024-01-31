@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240131
+      author: phihai91
+      changes:
+        - createTable:
+            tableName: integration_service
+            columns:
+              - column:
+                  name: id
+                  type: NVARCHAR
+              - column:
+                  name: api_key
+                  type: NVARCHAR
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+              - column:
+                  name: expired_at
+                  type: TIMESTAMP
