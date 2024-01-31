@@ -1,0 +1,18 @@
+version: '3.2'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres-db
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - e-wallet-network
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+networks:
+  e-wallet-network:
+    driver: bridge
