@@ -5,3 +5,11 @@ spring:
     password: ${POSTGRES_PASSWORD}
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yml
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    groups:
+      enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
