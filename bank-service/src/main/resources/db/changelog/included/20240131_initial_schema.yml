@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 20240131
+      id: 2024013108
       author: phihai91
       changes:
         - createTable:
@@ -18,6 +18,11 @@ databaseChangeLog:
               - column:
                   name: expired_at
                   type: TIMESTAMP
+        - addPrimaryKey:
+            tableName: integration_service
+            columnNames: id
+            constraintName: pk_service
+            validate: true
       rollback:
         - dropTable:
             tableName: integration_service

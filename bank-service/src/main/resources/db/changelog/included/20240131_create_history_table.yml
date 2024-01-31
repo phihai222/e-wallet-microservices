@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024013116
+      author: phihai91
+      changes:
+        - createTable:
+            tableName: balance_history
+            columns:
+              - column:
+                  name: id
+                  type: NVARCHAR
+              - column:
+                  name: account_number
+                  type: NVARCHAR
+              - column:
+                  name: action_type
+                  type: NVARCHAR
+              - column:
+                  name: target_account
+                  type: NVARCHAR
+              - column:
+                  name: amount
+                  type: BIGINT
+              - column:
+                  name: status
+                  type: NVARCHAR
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+        - addPrimaryKey:
+            tableName: balance_history
+            columnNames: id
+            constraintName: pk_balance_history
+            validate: true
+        - addForeignKeyConstraint:
+            baseTableName: balance_history
+            baseColumnNames: account_number
+            constraintName: fk_account_number
+            referencedTableName: account
+            referencedColumnNames: account_number
+      rollback:
+        - dropTable:
+            tableName: balance_history

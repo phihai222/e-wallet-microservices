@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024013115
+      author: phihai91
+      changes:
+        - createTable:
+            tableName: account
+            columns:
+              - column:
+                  name: account_number
+                  type: NVARCHAR
+              - column:
+                  name: mobile_number
+                  type: NVARCHAR
+              - column:
+                  name: password
+                  type: NVARCHAR
+              - column:
+                  name: account_type
+                  type: NVARCHAR
+              - column:
+                  name: balance_baseline
+                  type: BIGINT
+              - column:
+                  name: wallet_connected
+                  type: BOOLEAN
+              - column:
+                  name: status
+                  type: NVARCHAR
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+        - addPrimaryKey:
+            tableName: account
+            columnNames: account_number
+            constraintName: pk_account
+            validate: true
+      rollback:
+        - dropTable:
+            tableName: account
