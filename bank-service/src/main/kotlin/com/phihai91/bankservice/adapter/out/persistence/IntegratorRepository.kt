@@ -16,5 +16,5 @@ interface IntegratorRepository {
             Result(column = "created_at", property = "createdAt"),
             Result(column = "expired_at", property = "expiredAt"),
     )
-    fun getIntegratorById(id: String): IntegratorEntity
+    fun getIntegratorById(id: String): IntegratorEntity?
 }
