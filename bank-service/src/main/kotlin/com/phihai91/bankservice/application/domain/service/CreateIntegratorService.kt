@@ -5,7 +5,7 @@ import com.phihai91.bankservice.application.domain.model.Status
 import com.phihai91.bankservice.application.port.`in`.ICreateIntegratorUseCase
 import com.phihai91.bankservice.application.port.`in`.command.CreateIntegratorCommand
 import com.phihai91.bankservice.application.port.out.ICreateIntegratorPort
-import com.phihai91.bankservice.common.UseCase
+import com.phihai91.bankservice.common.anotations.UseCase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.keygen.KeyGenerators
 import java.util.*
