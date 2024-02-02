@@ -1,9 +1,6 @@
 package com.phihai91.bankservice.adapter.out.persistence
 
-import org.apache.ibatis.annotations.Mapper
-import org.apache.ibatis.annotations.Result
-import org.apache.ibatis.annotations.Results
-import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.*
 
 @Mapper
 interface IntegratorRepository {
@@ -17,4 +14,8 @@ interface IntegratorRepository {
             Result(column = "expired_at", property = "expiredAt"),
     )
     fun getIntegratorById(id: String): IntegratorEntity?
+
+    @Insert("INSERT INTO integrator(id,api_key,service_name,status,created_at,expired_at) " +
+            "values(#{id},#{apiKey},#{serviceName},#{status},#{createdAt},#{expiredAt})")
+    fun save(integrator: IntegratorEntity)
 }

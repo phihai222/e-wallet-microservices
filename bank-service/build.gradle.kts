@@ -31,6 +31,7 @@ dependencies {
     implementation("org.liquibase:liquibase-core")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3")
     implementation("jakarta.persistence:jakarta.persistence-api:3.2.0-M1")
+    implementation("org.springframework.security:spring-security-crypto:6.2.1")
     runtimeOnly("org.postgresql:postgresql")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
