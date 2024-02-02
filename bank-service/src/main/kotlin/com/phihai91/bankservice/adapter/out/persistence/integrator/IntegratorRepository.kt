@@ -1,4 +1,4 @@
-package com.phihai91.bankservice.adapter.out.persistence
+package com.phihai91.bankservice.adapter.out.persistence.integrator
 
 import org.apache.ibatis.annotations.*
 

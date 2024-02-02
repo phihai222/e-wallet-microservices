@@ -1,4 +1,4 @@
-package com.phihai91.bankservice.adapter.`in`.web
+package com.phihai91.bankservice.adapter.`in`.web.integrator
 
 import com.phihai91.bankservice.application.domain.model.Integrator
 import com.phihai91.bankservice.application.port.`in`.ICreateIntegratorUseCase

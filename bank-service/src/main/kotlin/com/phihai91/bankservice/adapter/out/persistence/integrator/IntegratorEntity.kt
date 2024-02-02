@@ -1,4 +1,4 @@
-package com.phihai91.bankservice.adapter.out.persistence
+package com.phihai91.bankservice.adapter.out.persistence.integrator
 
 data class IntegratorEntity(
         val id: String,

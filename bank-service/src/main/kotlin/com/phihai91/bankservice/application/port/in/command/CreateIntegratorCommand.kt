@@ -1,9 +1,9 @@
 package com.phihai91.bankservice.application.port.`in`.command
 
-import org.jetbrains.annotations.NotNull
+import jakarta.validation.constraints.NotEmpty
 
 data class CreateIntegratorCommand(
-    @NotNull val name: String,
+    @NotEmpty val name: String,
 ) {
     // TODO add validation here
 }
