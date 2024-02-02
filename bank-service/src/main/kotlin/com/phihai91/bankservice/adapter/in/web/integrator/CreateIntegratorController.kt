@@ -4,6 +4,7 @@ import com.phihai91.bankservice.application.domain.model.Integrator
 import com.phihai91.bankservice.application.port.`in`.ICreateIntegratorUseCase
 import com.phihai91.bankservice.application.port.`in`.command.CreateIntegratorCommand
 import com.phihai91.bankservice.common.anotations.WebAdapter
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -15,8 +16,9 @@ import reactor.core.publisher.Mono
 
 @WebAdapter
 @RestController
-@Tag(name = "Integrator")
 @RequestMapping("/api/v1/integrator")
+@SecurityRequirement(name = "apiKey")
+@Tag(name = "Integrator")
 class CreateIntegratorController {
     @Autowired
     lateinit var createIntegratorUseCase: ICreateIntegratorUseCase
