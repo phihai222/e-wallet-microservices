@@ -18,6 +18,12 @@ class IntegratorPersistentAdapter : ILoadIntegratorPort, ICreateIntegratorPort {
         return mapEntityToDomain(integrator)
     }
 
+    override fun loadIntegratorByApiKey(apiKey: String): Integrator {
+        val integrator = integratorRepository.getIntegratorByApiKey(apiKey) ?:
+        throw EntityNotFoundException("Integrator not found with Key: $apiKey")
+        return mapEntityToDomain(integrator)
+    }
+
     override fun create(integrator: Integrator): Integrator {
         val entity = mapDomainToEntity(integrator)
         integratorRepository.save(entity)

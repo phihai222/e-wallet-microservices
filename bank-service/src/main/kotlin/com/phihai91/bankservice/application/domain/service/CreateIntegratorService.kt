@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.keygen.KeyGenerators
 import java.util.*
 
+
 @UseCase
 class CreateIntegratorService : ICreateIntegratorUseCase {
 
@@ -21,12 +22,17 @@ class CreateIntegratorService : ICreateIntegratorUseCase {
         val key = generator.generateKey()
         val apiKey = Base64.getEncoder().encodeToString(key)
 
+        val currentDate = Date()
+        val calendar = Calendar.getInstance()
+        calendar.setTime(currentDate)
+        calendar.add(Calendar.DATE, 30)
+
         val newIntegrator = Integrator(
                 id = UUID.randomUUID().toString(),
-                createAt = Date().time,
+                createAt = currentDate.time,
                 apiKey = apiKey,
                 name = command.name,
-                expireTime = Date().time,
+                expireTime = calendar.timeInMillis,
                 status = Status.ACTIVE
         )
 

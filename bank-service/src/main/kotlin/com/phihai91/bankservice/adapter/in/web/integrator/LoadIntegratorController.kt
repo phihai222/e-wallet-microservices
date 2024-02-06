@@ -23,6 +23,6 @@ class LoadIntegratorController {
 
     @GetMapping("/{id}")
     fun getIntegrator(@PathVariable("id") id: String) : Mono<Integrator> {
-        return Mono.just(getIntegratorUseCase.getIntegrator(id))
+        return Mono.just(getIntegratorUseCase.getIntegratorById(id))
     }
 }

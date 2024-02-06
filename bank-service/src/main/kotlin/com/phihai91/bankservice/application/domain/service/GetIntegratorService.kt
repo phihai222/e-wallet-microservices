@@ -11,7 +11,11 @@ class GetIntegratorService : IGetIntegratorUseCase {
     @Autowired
     private lateinit var loadIntegratorPort: ILoadIntegratorPort
 
-    override fun getIntegrator(id: String): Integrator {
+    override fun getIntegratorById(id: String): Integrator {
         return loadIntegratorPort.loadIntegratorById(id)
+    }
+
+    override fun getIntegratorByKey(apiKey: String): Integrator {
+        return loadIntegratorPort.loadIntegratorByApiKey(apiKey)
     }
 }

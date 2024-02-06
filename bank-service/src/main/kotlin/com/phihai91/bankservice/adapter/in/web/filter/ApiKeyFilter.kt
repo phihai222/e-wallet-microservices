@@ -1,6 +1,9 @@
 package com.phihai91.bankservice.adapter.`in`.web.filter
 
+import com.phihai91.bankservice.application.port.`in`.ICheckValidIntegratorUseCase
 import com.phihai91.bankservice.common.API_KEY
+import jakarta.persistence.EntityNotFoundException
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.server.PathContainer
 import org.springframework.http.server.reactive.ServerHttpRequest
@@ -15,8 +18,10 @@ import reactor.core.publisher.Mono
 
 @Component
 class ApiKeyFilter : WebFilter {
+    @Autowired
+    private lateinit var checkValidIntegratorUseCase: ICheckValidIntegratorUseCase
     override fun filter(exchange: ServerWebExchange, chain: WebFilterChain): Mono<Void> {
-        if(isPublic(exchange.request.path.value()))
+        if (isPublic(exchange.request.path.value()))
             return chain.filter(exchange)
 
         val res = resolveApiKey(exchange.request)
@@ -29,21 +34,23 @@ class ApiKeyFilter : WebFilter {
 
     fun resolveApiKey(request: ServerHttpRequest): Boolean {
         val headerApiKey = request.headers.getFirst(API_KEY)
-        // TODO validate valid API Key
+                ?: return false
 
-        println("headerApiKey: $headerApiKey")
-
-        return false
+        return try {
+            checkValidIntegratorUseCase.checkValidIntegrator(headerApiKey)
+        } catch (ex: EntityNotFoundException) {
+            false
+        }
     }
 
-    fun isPublic(path: String) : Boolean {
-        println("Current access:: $path")
-
+    fun isPublic(path: String): Boolean {
         val publicPath = listOf("/api/v1/public/**",
                 "/swagger-ui.html",
                 "/webjars/swagger-ui/index.html",
                 "/v3/api-docs/swagger-config",
-                "/v3/api-docs")
+                "/v3/api-docs",
+                "/api/v1/integrator" // TODO remove in future, current for test
+                )
 
         val patters = mutableListOf<PathPattern>()
 
@@ -51,8 +58,8 @@ class ApiKeyFilter : WebFilter {
             patters.add(PathPatternParser.defaultInstance.parse(it))
         }
 
-        patters.forEach{
-            if(it.matches(PathContainer.parsePath(path)))
+        patters.forEach {
+            if (it.matches(PathContainer.parsePath(path)))
                 return true
         }
 
