@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240602
+      author: phihai91
+      changes:
+        - insert:
+            tableName: integrator
+            columns:
+              - column:
+                  name: id
+                  value: f2aee3ef-06ef-45ca-be7b-4c2d221a9b1b
+              - column:
+                  name: api_key
+                  value: Ww+x0v5LvfX64dTqTaMHN/RS3T0lhxQT4xAVICFu5mA=
+              - column:
+                  name: service_name
+                  value: Bank Admin
+              - column:
+                  name: status
+                  value: ACTIVE
+              - column:
+                  name: created_at
+                  value: 1707194929950
+              - column:
+                  name: expired_at
+                  value: 7956915742000
+      rollback:
+        - delete:
+            tableName: integrator
+            where: id='f2aee3ef-06ef-45ca-be7b-4c2d221a9b1b'

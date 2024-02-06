@@ -48,9 +48,7 @@ class ApiKeyFilter : WebFilter {
                 "/swagger-ui.html",
                 "/webjars/swagger-ui/index.html",
                 "/v3/api-docs/swagger-config",
-                "/v3/api-docs",
-                "/api/v1/integrator" // TODO remove in future, current for test
-                )
+                "/v3/api-docs")
 
         val patters = mutableListOf<PathPattern>()
 
