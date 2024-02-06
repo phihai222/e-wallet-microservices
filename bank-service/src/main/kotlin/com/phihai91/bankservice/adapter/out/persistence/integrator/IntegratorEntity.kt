@@ -7,4 +7,5 @@ data class IntegratorEntity(
         var status: String,
         val createdAt: Long,
         val expiredAt: Long,
+        val type: String
 )

@@ -1,6 +1,7 @@
 package com.phihai91.bankservice.application.domain.service
 
 import com.phihai91.bankservice.application.domain.model.Integrator
+import com.phihai91.bankservice.application.domain.model.IntegratorType
 import com.phihai91.bankservice.application.domain.model.Status
 import com.phihai91.bankservice.application.port.`in`.ICreateIntegratorUseCase
 import com.phihai91.bankservice.application.port.`in`.command.CreateIntegratorCommand
@@ -27,13 +28,16 @@ class CreateIntegratorService : ICreateIntegratorUseCase {
         calendar.setTime(currentDate)
         calendar.add(Calendar.DATE, 30)
 
+        // TODO check current is Admin for create new Integrator
+
         val newIntegrator = Integrator(
                 id = UUID.randomUUID().toString(),
                 createAt = currentDate.time,
                 apiKey = apiKey,
                 name = command.name,
                 expireTime = calendar.timeInMillis,
-                status = Status.ACTIVE
+                status = Status.ACTIVE,
+                type = IntegratorType.CLIENT
         )
 
         return createIntegratorPort.create(newIntegrator)

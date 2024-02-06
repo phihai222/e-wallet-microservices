@@ -24,6 +24,9 @@ databaseChangeLog:
               - column:
                   name: expired_at
                   type: BIGINT
+              - column:
+                  name: type
+                  type: NVARCHAR
         - addPrimaryKey:
             tableName: integrator
             columnNames: id

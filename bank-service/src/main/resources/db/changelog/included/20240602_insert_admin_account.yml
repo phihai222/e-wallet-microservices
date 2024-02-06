@@ -24,6 +24,9 @@ databaseChangeLog:
               - column:
                   name: expired_at
                   value: 7956915742000
+              - column:
+                  name: type
+                  value: ADMIN
       rollback:
         - delete:
             tableName: integrator

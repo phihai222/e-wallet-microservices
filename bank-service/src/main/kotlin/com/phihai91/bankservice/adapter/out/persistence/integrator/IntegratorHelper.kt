@@ -1,6 +1,7 @@
 package com.phihai91.bankservice.adapter.out.persistence.integrator
 
 import com.phihai91.bankservice.application.domain.model.Integrator
+import com.phihai91.bankservice.application.domain.model.IntegratorType
 import com.phihai91.bankservice.application.domain.model.Status
 
 fun mapDomainToEntity(input: Integrator): IntegratorEntity {
@@ -11,7 +12,9 @@ fun mapDomainToEntity(input: Integrator): IntegratorEntity {
                 apiKey = it.apiKey,
                 createdAt = it.createAt,
                 expiredAt = it.expireTime,
-                status = it.status.toString())
+                status = it.status.toString(),
+                type = it.type.toString()
+        )
     }
 }
 
@@ -23,6 +26,8 @@ fun mapEntityToDomain(input: IntegratorEntity): Integrator {
                 apiKey = it.apiKey,
                 status = Status.valueOf(it.status),
                 name = it.serviceName,
-                expireTime = it.expiredAt)
+                expireTime = it.expiredAt,
+                type = IntegratorType.valueOf(it.type)
+        )
     }
 }
