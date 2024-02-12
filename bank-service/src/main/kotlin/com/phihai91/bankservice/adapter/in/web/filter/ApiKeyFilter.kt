@@ -46,7 +46,7 @@ class ApiKeyFilter : WebFilter {
     fun isPublic(path: String): Boolean {
         val publicPath = listOf("/api/v1/public/**",
                 "/swagger-ui.html",
-                "/webjars/swagger-ui/index.html",
+                "/webjars/swagger-ui/**",
                 "/v3/api-docs/swagger-config",
                 "/v3/api-docs")
 
