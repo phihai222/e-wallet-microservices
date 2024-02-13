@@ -1,40 +1,36 @@
 databaseChangeLog:
   - changeSet:
-      id: 2024013115
+      id: 20240213
       author: phihai91
       changes:
-        - createTable:
+        - insert:
             tableName: account
             columns:
               - column:
                   name: account_number
-                  type: NVARCHAR
+                  value: 9557b23c-9a7e-49d8-b485-760128635507
               - column:
                   name: mobile_number
-                  type: NVARCHAR
+                  value: 19002202
               - column:
                   name: passcode
-                  type: NVARCHAR
+                  value: 22021991
               - column:
                   name: account_type
-                  type: NVARCHAR
+                  value: COMPANY
               - column:
                   name: balance_baseline
-                  type: BIGINT
+                  value: 100000000
               - column:
                   name: wallet_connected
-                  type: BOOLEAN
+                  value: true
               - column:
                   name: status
-                  type: NVARCHAR
+                  value: ACTIVE
               - column:
                   name: created_at
-                  type: BIGINT
-        - addPrimaryKey:
-            tableName: account
-            columnNames: account_number
-            constraintName: pk_account
-            validate: true
+                  value: 1707194929950
       rollback:
-        - dropTable:
+        - delete:
             tableName: account
+            where: id='9557b23c-9a7e-49d8-b485-760128635507'

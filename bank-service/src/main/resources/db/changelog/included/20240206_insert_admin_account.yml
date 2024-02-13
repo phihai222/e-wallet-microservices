@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 20240602
+      id: 20240206
       author: phihai91
       changes:
         - insert:
