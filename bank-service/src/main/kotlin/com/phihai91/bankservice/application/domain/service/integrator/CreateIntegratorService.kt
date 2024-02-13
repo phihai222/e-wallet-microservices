@@ -1,12 +1,12 @@
-package com.phihai91.bankservice.application.domain.service
+package com.phihai91.bankservice.application.domain.service.integrator
 
 import com.phihai91.bankservice.common.exception.ForbiddenException
 import com.phihai91.bankservice.application.domain.model.Integrator
 import com.phihai91.bankservice.application.domain.model.IntegratorType
 import com.phihai91.bankservice.application.domain.model.Status
-import com.phihai91.bankservice.application.port.`in`.ICreateIntegratorUseCase
-import com.phihai91.bankservice.application.port.`in`.command.CreateIntegratorCommand
-import com.phihai91.bankservice.application.port.out.ICreateIntegratorPort
+import com.phihai91.bankservice.application.port.`in`.integrator.ICreateIntegratorUseCase
+import com.phihai91.bankservice.application.port.`in`.integrator.command.CreateIntegratorCommand
+import com.phihai91.bankservice.application.port.out.integrator.ICreateIntegratorPort
 import com.phihai91.bankservice.common.anotations.UseCase
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.keygen.KeyGenerators

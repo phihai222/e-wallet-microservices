@@ -1,6 +1,6 @@
 package com.phihai91.bankservice.adapter.`in`.web.filter
 
-import com.phihai91.bankservice.application.port.`in`.ICheckValidIntegratorUseCase
+import com.phihai91.bankservice.application.port.`in`.integrator.ICheckValidIntegratorUseCase
 import com.phihai91.bankservice.common.API_KEY
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.beans.factory.annotation.Autowired

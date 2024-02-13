@@ -1,4 +1,4 @@
-package com.phihai91.bankservice.application.port.`in`.command
+package com.phihai91.bankservice.application.port.`in`.integrator.command
 
 import com.phihai91.bankservice.common.validate
 import jakarta.validation.constraints.NotEmpty

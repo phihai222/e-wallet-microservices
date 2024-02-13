@@ -1,4 +1,4 @@
-package com.phihai91.bankservice.application.port.out
+package com.phihai91.bankservice.application.port.out.integrator
 
 import com.phihai91.bankservice.application.domain.model.Integrator
 

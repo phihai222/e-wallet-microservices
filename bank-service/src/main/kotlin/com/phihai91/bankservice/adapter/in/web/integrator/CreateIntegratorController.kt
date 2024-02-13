@@ -1,9 +1,9 @@
 package com.phihai91.bankservice.adapter.`in`.web.integrator
 
 import com.phihai91.bankservice.application.domain.model.Integrator
-import com.phihai91.bankservice.application.port.`in`.ICreateIntegratorUseCase
-import com.phihai91.bankservice.application.port.`in`.IGetIntegratorUseCase
-import com.phihai91.bankservice.application.port.`in`.command.CreateIntegratorCommand
+import com.phihai91.bankservice.application.port.`in`.integrator.ICreateIntegratorUseCase
+import com.phihai91.bankservice.application.port.`in`.integrator.IGetIntegratorUseCase
+import com.phihai91.bankservice.application.port.`in`.integrator.command.CreateIntegratorCommand
 import com.phihai91.bankservice.common.API_KEY
 import com.phihai91.bankservice.common.anotations.WebAdapter
 import io.swagger.v3.oas.annotations.Parameter

@@ -1,8 +1,8 @@
-package com.phihai91.bankservice.application.domain.service
+package com.phihai91.bankservice.application.domain.service.integrator
 
 import com.phihai91.bankservice.application.domain.model.Integrator
-import com.phihai91.bankservice.application.port.`in`.IGetIntegratorUseCase
-import com.phihai91.bankservice.application.port.out.ILoadIntegratorPort
+import com.phihai91.bankservice.application.port.`in`.integrator.IGetIntegratorUseCase
+import com.phihai91.bankservice.application.port.out.integrator.ILoadIntegratorPort
 import com.phihai91.bankservice.common.anotations.UseCase
 import com.phihai91.bankservice.common.exception.ForbiddenException
 import org.springframework.beans.factory.annotation.Autowired
