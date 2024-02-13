@@ -4,6 +4,7 @@ import com.phihai91.bankservice.application.domain.model.Integrator
 import com.phihai91.bankservice.application.port.`in`.IGetIntegratorUseCase
 import com.phihai91.bankservice.application.port.out.ILoadIntegratorPort
 import com.phihai91.bankservice.common.anotations.UseCase
+import com.phihai91.bankservice.common.exception.ForbiddenException
 import org.springframework.beans.factory.annotation.Autowired
 
 @UseCase
@@ -11,7 +12,9 @@ class GetIntegratorService : IGetIntegratorUseCase {
     @Autowired
     private lateinit var loadIntegratorPort: ILoadIntegratorPort
 
-    override fun getIntegratorById(id: String): Integrator {
+    override fun getIntegratorById(id: String, current: Integrator): Integrator {
+        if (!current.isAdmin())
+            throw ForbiddenException()
         return loadIntegratorPort.loadIntegratorById(id)
     }
 

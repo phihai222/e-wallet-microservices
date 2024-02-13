@@ -2,14 +2,13 @@ package com.phihai91.bankservice.adapter.`in`.web.integrator
 
 import com.phihai91.bankservice.application.domain.model.Integrator
 import com.phihai91.bankservice.application.port.`in`.IGetIntegratorUseCase
+import com.phihai91.bankservice.common.API_KEY
 import com.phihai91.bankservice.common.anotations.WebAdapter
+import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 
 @WebAdapter
@@ -22,7 +21,12 @@ class LoadIntegratorController {
     private lateinit var getIntegratorUseCase: IGetIntegratorUseCase
 
     @GetMapping("/{id}")
-    fun getIntegrator(@PathVariable("id") id: String) : Mono<Integrator> {
-        return Mono.just(getIntegratorUseCase.getIntegratorById(id))
+    fun getIntegrator(
+        @PathVariable("id") id: String,
+        @Parameter(required = false, hidden = true) @RequestHeader(API_KEY) apiKey: String
+    ) : Mono<Integrator>
+    {
+        val currentIntegrator = getIntegratorUseCase.getIntegratorByKey(apiKey)
+        return Mono.just(getIntegratorUseCase.getIntegratorById(id, currentIntegrator))
     }
 }
