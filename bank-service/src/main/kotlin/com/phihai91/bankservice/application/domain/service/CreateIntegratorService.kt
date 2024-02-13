@@ -1,5 +1,6 @@
 package com.phihai91.bankservice.application.domain.service
 
+import com.phihai91.bankservice.common.exception.ForbiddenException
 import com.phihai91.bankservice.application.domain.model.Integrator
 import com.phihai91.bankservice.application.domain.model.IntegratorType
 import com.phihai91.bankservice.application.domain.model.Status
@@ -18,7 +19,13 @@ class CreateIntegratorService : ICreateIntegratorUseCase {
     @Autowired
     private lateinit var createIntegratorPort: ICreateIntegratorPort
 
-    override fun createIntegrator(command: CreateIntegratorCommand): Integrator {
+    override fun createIntegrator(
+        command: CreateIntegratorCommand,
+        caller: Integrator
+    ): Integrator {
+        if (!caller.isAdmin())
+            throw ForbiddenException()
+
         val generator = KeyGenerators.secureRandom(32)
         val key = generator.generateKey()
         val apiKey = Base64.getEncoder().encodeToString(key)
@@ -28,16 +35,14 @@ class CreateIntegratorService : ICreateIntegratorUseCase {
         calendar.setTime(currentDate)
         calendar.add(Calendar.DATE, 30)
 
-        // TODO check current is Admin for create new Integrator
-
         val newIntegrator = Integrator(
-                id = UUID.randomUUID().toString(),
-                createAt = currentDate.time,
-                apiKey = apiKey,
-                name = command.name,
-                expireTime = calendar.timeInMillis,
-                status = Status.ACTIVE,
-                type = IntegratorType.CLIENT
+            id = UUID.randomUUID().toString(),
+            createAt = currentDate.time,
+            apiKey = apiKey,
+            name = command.name,
+            expireTime = calendar.timeInMillis,
+            status = Status.ACTIVE,
+            type = IntegratorType.CLIENT
         )
 
         return createIntegratorPort.create(newIntegrator)
