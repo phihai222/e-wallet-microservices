@@ -5,4 +5,5 @@ import com.phihai91.bankservice.application.domain.model.Integrator
 
 interface ILoadAccountUseCase {
     fun loadAllAccount(caller: Integrator): List<Account>
+    fun loadAccount(accountNumber: String, caller: Integrator) : Account?
 }

@@ -35,4 +35,17 @@ class LoadAccountController {
             ResponseEntity.ok(Mono.just(it))
         }
     }
+
+    @GetMapping("/{accountNumber}")
+    fun getAccount(
+        @PathVariable accountNumber: String,
+        @Parameter(required = false, hidden = true) @RequestHeader(API_KEY) apiKey: String
+    ): ResponseEntity<Account?> {
+        val integrator = getIntegratorUseCase.getIntegratorByKey(apiKey)
+
+        return loadAccountUseCase.loadAccount(accountNumber, integrator).let {
+            ResponseEntity.ok(it)
+        }
+
+    }
 }
