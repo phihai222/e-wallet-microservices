@@ -38,12 +38,12 @@ class AccountPersistentAdapter : ILoadAccountPort, ICreateAccountPort {
             AccountEntity(
                 accountNumber = it.accountNumber,
                 mobileNumber = it.mobileNumber,
-                createdAt = it.createdAt,
                 passcode = it.passcode,
+                accountType = it.accountType.toString(),
                 balanceBaseline = it.balanceBaseline,
-                status = it.status,
                 walletConnected = it.walletConnected,
-                accountType = it.accountType.toString()
+                status = it.status,
+                createdAt = it.createdAt
             )
         }
 

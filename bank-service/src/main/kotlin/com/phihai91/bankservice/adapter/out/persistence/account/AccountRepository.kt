@@ -13,7 +13,7 @@ interface AccountRepository {
     fun existedByMobileNumber(mobileNumber: String): Boolean
 
     @Insert("INSERT INTO account(account_number, mobile_number,passcode,account_type,balance_baseline,wallet_connected,status,created_at)" +
-            "values('#{accountNumber},#{mobileNumber},#{passcode},#{accountType},#{balanceBaseline},#{walletConnected},#{status},#{createdAt}')")
+            "values(#{accountNumber},#{mobileNumber},#{passcode},#{accountType},#{balanceBaseline},#{walletConnected},#{status},#{createdAt})")
     fun saveAccount(account: AccountEntity)
 
     @Select("SELECT * FROM account WHERE account_number=#{accountNumber}")

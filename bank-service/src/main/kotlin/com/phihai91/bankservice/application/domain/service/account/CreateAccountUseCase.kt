@@ -31,13 +31,13 @@ class CreateAccountUseCase : ICreateAccountUseCase {
         val newAccount = command.let {
             Account(
                 accountNumber = Date().time.toString(),
-                accountType = AccountType.INDIVIDUAL,
-                createdAt = Date().time,
-                balanceBaseline = 1000000L,
                 mobileNumber = it.mobileNumber,
                 passcode = it.passcode,
+                accountType = AccountType.INDIVIDUAL,
+                balanceBaseline = 1000000L,
+                walletConnected = false,
                 status = Status.ACTIVE,
-                walletConnected = false
+                createdAt = Date().time
             )
         }
 

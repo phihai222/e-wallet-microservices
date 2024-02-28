@@ -8,13 +8,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: account_number
-                  value: 9557b23c-9a7e-49d8-b485-760128635507
+                  value: 1709102735276
               - column:
                   name: mobile_number
                   value: 19002202
               - column:
                   name: passcode
-                  value: 22021991
+                  value: 222191
               - column:
                   name: account_type
                   value: COMPANY
