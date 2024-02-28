@@ -1,8 +1,7 @@
 package com.phihai91.bankservice.adapter.`in`.web.controller.account
 
 import com.phihai91.bankservice.application.domain.model.Account
-import com.phihai91.bankservice.application.domain.service.account.CreateAccountUseCase
-import com.phihai91.bankservice.application.port.`in`.account.command.CreateAccountCommand
+import com.phihai91.bankservice.application.port.`in`.account.ILoadAccountUseCase
 import com.phihai91.bankservice.application.port.`in`.integrator.IGetIntegratorUseCase
 import com.phihai91.bankservice.common.API_KEY
 import com.phihai91.bankservice.common.anotations.WebAdapter
@@ -19,21 +18,20 @@ import reactor.core.publisher.Mono
 @RequestMapping("/api/v1/accounts")
 @SecurityRequirement(name = "apiKey")
 @Tag(name = "Account")
-class CreateAccountController {
+class LoadAccountController {
     @Autowired
-    private lateinit var createAccountUseCase: CreateAccountUseCase
+    lateinit var loadAccountUseCase: ILoadAccountUseCase
 
     @Autowired
     lateinit var getIntegratorUseCase: IGetIntegratorUseCase
 
-    @PostMapping
-    fun createAccount(
-        @RequestBody input: CreateAccountCommand,
+    @GetMapping
+    fun getAllAccount(
         @Parameter(required = false, hidden = true) @RequestHeader(API_KEY) apiKey: String
-    ): ResponseEntity<Mono<Account>> {
+    ): ResponseEntity<Mono<List<Account>>> {
         val integrator = getIntegratorUseCase.getIntegratorByKey(apiKey)
 
-        return createAccountUseCase.createAccount(input,integrator).let {
+        return loadAccountUseCase.loadAllAccount(integrator).let {
             ResponseEntity.ok(Mono.just(it))
         }
     }

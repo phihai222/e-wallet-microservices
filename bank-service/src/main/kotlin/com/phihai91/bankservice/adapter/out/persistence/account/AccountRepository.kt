@@ -27,4 +27,16 @@ interface AccountRepository {
         Result(column = "status", property = "status"),
         Result(column = "created_at", property = "createdAt"))
     fun findByAccountNumber(accountNumber: String) : AccountEntity?
+
+    @Select("SELECT * FROM account")
+    @Results(
+        Result(column = "account_number", property = "accountNumber"),
+        Result(column = "mobile_number", property = "mobileNumber"),
+        Result(column = "passcode", property = "passcode"),
+        Result(column = "account_type", property = "accountType"),
+        Result(column = "balance_baseline", property = "balanceBaseline"),
+        Result(column = "wallet_connected", property = "walletConnected"),
+        Result(column = "status", property = "status"),
+        Result(column = "created_at", property = "createdAt"))
+    fun findAll(): List<AccountEntity>
 }

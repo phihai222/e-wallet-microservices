@@ -7,6 +7,7 @@ import com.phihai91.bankservice.application.port.out.account.ILoadAccountPort
 import com.phihai91.bankservice.common.anotations.PersistenceAdapter
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
+import java.util.stream.Collectors
 
 @PersistenceAdapter
 class AccountPersistentAdapter : ILoadAccountPort, ICreateAccountPort {
@@ -31,6 +32,21 @@ class AccountPersistentAdapter : ILoadAccountPort, ICreateAccountPort {
                 passcode = it.passcode
             )
         }
+    }
+
+    override fun loadAccounts(): List<Account> {
+        return accountRepository.findAll().stream().map { a ->
+            Account(
+                accountNumber = a.accountNumber,
+                accountType = AccountType.valueOf(a.accountType),
+                walletConnected = a.walletConnected,
+                status = a.status,
+                mobileNumber = a.mobileNumber,
+                balanceBaseline = a.balanceBaseline,
+                createdAt = a.createdAt,
+                passcode = a.passcode
+            )
+        }.collect(Collectors.toList())
     }
 
     override fun createAccount(account: Account): Account {
