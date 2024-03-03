@@ -1,6 +1,6 @@
 package com.phihai91.bankservice.application.domain.model
 
-data class Account(
+class Account(
     val accountNumber: String,
     val mobileNumber: String,
     val passcode: String,
@@ -10,7 +10,6 @@ data class Account(
     val status: Status,
     val createdAt: Long,
 )
-
 enum class AccountType {
     COMPANY,
     INDIVIDUAL
